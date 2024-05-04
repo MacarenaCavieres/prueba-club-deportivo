@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <title>Deportes</title>
         <link
             rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -55,7 +56,7 @@
         <table class="table w-25 m-auto border">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">ID</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Precio</th>
                     <th scope="col"></th>
@@ -104,7 +105,7 @@
                         precio,
                     })
                     .then((response) => {
-                        alert(response.data);
+                        alert("Agregado: " + response.data.nombre);
                         getData();
                     });
                 $("#exampleModal").modal("hide");
@@ -119,8 +120,8 @@
                         nombre,
                         precio,
                     })
-                    .then((data) => {
-                        alert(data.data);
+                    .then((response) => {
+                        alert("Editado: " + response.data.depo.nombre);
                         getData();
                     });
                 $("#exampleModal").modal("hide");
@@ -128,7 +129,7 @@
 
             function eliminar(id) {
                 axios.delete(`/eliminar/${id}`).then((response) => {
-                    alert(response.data);
+                    alert("Eliminado: " + response.data.depo.nombre);
                     getData();
                 });
                 $("#exampleModal").modal("hide");
